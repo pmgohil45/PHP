@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<BOOKCATALOG>
+    <BOOK ID="21">
+        <NAME>Learn XML</NAME>
+        <PRICE>500</PRICE>
+        <PAGE>400</PAGE>
+        <TYPE>E-book</TYPE>
+    </BOOK>
+    <BOOK ID="22">
+        <NAME>Learn XML</NAME>
+        <PRICE>500</PRICE>
+        <PAGE>400</PAGE>
+        <TYPE>E-book</TYPE>
+    </BOOK>
+    <BOOK ID="23">
+        <NAME>Learn XML</NAME>
+        <PRICE>500</PRICE>
+        <PAGE>400</PAGE>
+        <TYPE>E-book</TYPE>
+    </BOOK>
+    <BOOK ID="24">
+        <NAME>Learn XML</NAME>
+        <PRICE>500</PRICE>
+        <PAGE>400</PAGE>
+        <TYPE>E-book</TYPE>
+    </BOOK>
+    <BOOK ID="25">
+        <NAME>Learn XML</NAME>
+        <PRICE>500</PRICE>
+        <PAGE>400</PAGE>
+        <TYPE>E-book</TYPE>
+    </BOOK>
+</BOOKCATALOG>

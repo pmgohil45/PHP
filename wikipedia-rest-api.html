@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script>
+            function loadJSON(){
+                var search = document.getElementById("user_input").value
+                var json_file_url = "https://en.wikipedia.org/api/rest_v1/page/summary/"+search;
+
+                try{
+                    http_request = new XMLHttpRequest();
+                }catch(e){
+                    alert("Your browser broke!");
+                    return false;
+                }
+                http_request.onreadystatechange = function(){
+                    if(http_request.readyState == 4){
+                        var jsonObj =  JSON.parse(http_request.responseText);
+                        document.getElementById("title").innerHTML = jsonObj.title;
+                        document.getElementById("description").innerHTML = jsonObj.description;
+                        document.getElementById("thumbnail").src = jsonObj.thumbnail.source;
+                        document.getElementById("extract").innerHTML = jsonObj.extract;
+                    }
+                }
+                http_request.open("GET", json_file_url, true);
+                http_request.send();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Get details</h1>
+        <input type="text" id="user_input"><button type="button" onclick="loadJSON()">Click Me</button><br>
+        Title: <span id = "title"></span><br>
+        Description: <span id = "description"></span><br>
+        Thumbnail:<img src="" id="thumbnail"></img><br>
+        Extract: <span id = "extract"></span><br>
+
+        <br>
+    </body>
+</html>

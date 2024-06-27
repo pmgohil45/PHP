@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script>
+            function loadJSON(){
+                var json_file_url = "https://dog.ceo/api/breeds/image/random";
+                try{
+                    http_request = new XMLHttpRequest();
+                }catch(e){
+                    alert("Your browser broke!");
+                    return false;
+                }
+                http_request.onreadystatechange = function(){
+                    if(http_request.readyState == 4){
+                        var jsonObj =  JSON.parse(http_request.responseText);
+                        document.getElementById("status").innerHTML = jsonObj.status;
+                        document.getElementById("random_image").src = jsonObj.message;
+                    }
+                }
+                http_request.open("GET", json_file_url, true);
+                http_request.send();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Get details</h1>
+        status: <span id = "status"></span><br>
+        <img src="" id="random_image"></img>
+        <br>
+        <button type="button" onclick="loadJSON()">Click to change Image</button>
+    </body>
+</html>

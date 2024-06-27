@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Book Details Example</title>
+    <script>
+        function alertContents(httpRequest, type){
+            if(httpRequest.readyState==4){
+                if((httpRequest.status==200) || (httpRequest.status==0)){
+                    //alert("test");
+                    var ourXMLdata = httpRequest.responseXML;
+                    var ourEntries=ourXMLdata.getElementsByTagName("BOOK");
+                    var output='<ol>';
+                        for(var i=0; i<ourEntries.length; i++){
+                            if(ourEntries[i].getAttribute("GR")==type){
+                                output+='<li>'
+                                    output+='<b>Title:'+ourEntries[i].getElementsByTagName('NAME')[0].firstChild.nodeValue+'</b>'
+                                    output+='<ul><li>'
+                                        output+='<b>PRICE:'+ourEntries[i].getElementsByTagName('PRICE')[0].firstChild.nodeValue
+                                    output+='</li><li>'
+                                        output+='<b>PAGE:'+ourEntries[i].getElementsByTagName('PAGE')[0].firstChild.nodeValue
+                                    output+='</li><li>'
+                                        output+='<b>TYPE:'+ourEntries[i].getElementsByTagName('TYPE')[0].firstChild.nodeValue
+                                    output+='</li></ul></li>'
+                            }
+                        }
+                        output+='</ol>'
+                        document.getElementById("result").innerHTML=output;       
+                }else{
+                    document.getElementById("error").innerHTML="<h2>Some Error Occured</h2>";
+                    alert("Something is Wrong..1")
+                }
+            }
+        }
+        function send_with_ajax(type){
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function(){ alertContents(httpRequest, type); };
+            httpRequest.open("GET","book.xml",true);
+            httpRequest.send(null);
+        }
+    </script>
+</head>
+<body>
+    <select onChange="send_with_ajax(this.value);">
+        <option>Select</option>
+        <option value="SC">Science</option>
+        <option value="CO">Computers</option>
+        <option value="LT">Literature</option>
+    </select><br><br>
+    <button onClick="send_with_ajax();">Click the button to retrieve the XML</button>
+    <div id="result"></div>
+    <div id="error" style="color:red;"></div>
+</body>
+</html>

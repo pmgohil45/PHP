@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Dropdown with AJAX Example</title>
+        <script>
+        function alertContents(httpRequest) {
+            if (httpRequest.readyState == 4) {
+                if (httpRequest.status == 200) {
+                    document.getElementById("state").innerHTML = '<option>Select</option>' + httpRequest.responseText;
+                } else {
+                    alert('Something went wrong!');
+                }
+            }
+        }
+
+        function displaySelectedValue1(selectedValue) {
+            if (selectedValue !== "Select.html") {
+                var httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = function () { alertContents(httpRequest); };
+                httpRequest.open('GET', selectedValue + '.html', true);
+                httpRequest.send();
+            }
+        }
+    </script>
+</head>
+<body>
+    Select a country:
+    <select id="country" onchange="displaySelectedValue1(this.value);">
+        <option>Select Please!</option>
+        <option value="in">India</option>
+        <option value="jp">Japan</option>
+		<option value="ch">China</option>
+    </select><br><br>
+    Select a State:
+    <select id="state">
+        <option>Select</option>
+    </select>
+</body>
+</html>
