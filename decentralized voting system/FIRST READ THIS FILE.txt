@@ -1,0 +1,25 @@
+==> Problem Statement: Decentralized Voting System
+
+==> Problem Description: Design a secure, decentralized voting system using blockchain technology to ensure transparency and prevent tampering in elections. The system should allow voters to cast their ballots electronically, verify their identities, and ensure that votes are accurately recorded and counted. The challenge involves addressing security concerns, user authentication, and creating a user-friendly interface. 
+
+==> Expected Outcome: 
+	1) Increased Security: Enhanced protection against tampering and fraud, as the decentralized nature reduces the risk of a single point of failure or manipulation.
+	2) Improved Transparency: Greater transparency in the voting process, as all transactions are recorded on a public ledger, making it easier to verify results and audit the system.
+	3) Enhanced Privacy: Better protection of voter privacy through encryption and secure data handling, ensuring that individual votes remain confidential
+
+==> Create database in http://localhost/phpmyadmin/ and Database named as 'prakash'
+
+==> in 'prakash' database create 2 table named as 'users' and 'votes'
+
++ in 'users' table create below columns
+++ it contains 4 columns like below
++++ fullname - type VARCHAR - size 50
++++ email - type VARCHAR - size 250
++++ password - type VARCHAR - size 11
++++ govt_id - type VARCHAR - size 16 - constrain unique or primary key
+
++ in 'votes' table create below columns
+++ it contains 3 columns like below
++++ govt_id type VARCHAR - size 16
++++ users_voting_id type VARCHAR - size 16 - constrain unique or primary key
++++ current_time type VARCHAR - size 10
